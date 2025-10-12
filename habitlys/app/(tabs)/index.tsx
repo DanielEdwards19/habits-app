@@ -6,6 +6,7 @@ import { ThemedView } from '@/components/themed-view';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors, Spacing } from '@/constants/theme';
 import { StyleSheet } from 'react-native';
+import { router } from 'expo-router';
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
@@ -32,7 +33,7 @@ export default function HomeScreen() {
           <ThemedView style={styles.buttonContainer}>
             <Pressable
               style={[styles.button, { backgroundColor: colors.primary, paddingVertical: 14 }]}
-              onPress={() => console.log('Get Started pressed')}
+              onPress={() => router.push('/modal')}
             >
               <ThemedText
                 type="defaultSemiBold"
