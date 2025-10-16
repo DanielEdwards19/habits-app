@@ -1,23 +1,26 @@
-import { Pressable } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from 'expo-image';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { Colors, Spacing } from '@/constants/theme';
-import { StyleSheet } from 'react-native';
-import { router } from 'expo-router';
+import { Pressable } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Image } from "expo-image";
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { Colors, Spacing } from "@/constants/theme";
+import { StyleSheet } from "react-native";
+import { router } from "expo-router";
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
-  const colors = Colors[colorScheme ?? 'light'];
+  const colors = Colors[colorScheme ?? "light"];
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]} edges={['top', 'bottom']}>
+    <SafeAreaView
+      style={[styles.safeArea, { backgroundColor: colors.background }]}
+      edges={["top", "bottom"]}
+    >
       <ThemedView style={styles.container}>
         <ThemedView style={styles.content}>
           <Image
-            source={require('@/assets/images/waterdrop.png')}
+            source={require("@/assets/images/waterdrop.png")}
             style={styles.logo}
             contentFit="contain"
             priority="high"
@@ -28,18 +31,28 @@ export default function HomeScreen() {
           </ThemedText>
 
           <ThemedText type="default" style={styles.bodyText}>
-            Stay focused and provide real clean water to communities in Africa.
+            Stay focused and provide{" "}
+            <ThemedText
+              type="default"
+              style={[styles.highlightText, { color: colors.primary }]}
+            >
+              real clean water to communities
+            </ThemedText>{" "}
+            in Africa.
           </ThemedText>
           <ThemedView style={styles.buttonContainer}>
             <Pressable
-              style={[styles.button, { backgroundColor: colors.primary, paddingVertical: 14 }]}
-              onPress={() => router.push('/modal')}
+              style={[
+                styles.button,
+                { backgroundColor: colors.primary, paddingVertical: 14 },
+              ]}
+              onPress={() => router.push("/modal")}
             >
               <ThemedText
                 type="defaultSemiBold"
                 lightColor="#FFFFFF"
                 darkColor="#FFFFFF"
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: "center" }}
               >
                 + Add your first habit
               </ThemedText>
@@ -65,7 +78,7 @@ const styles = StyleSheet.create({
     gap: Spacing.md,
     paddingHorizontal: Spacing.lg,
     maxWidth: 400,
-    width: '100%',
+    width: "100%",
   },
   logo: {
     width: "50%",
@@ -78,8 +91,11 @@ const styles = StyleSheet.create({
   bodyText: {
     textAlign: "center",
   },
+  highlightText: {
+    textAlign: "center",
+  },
   buttonContainer: {
-    width: '100%',
+    width: "100%",
     gap: Spacing.md,
     marginTop: Spacing.lg,
   },

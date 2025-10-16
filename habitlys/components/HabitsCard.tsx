@@ -11,7 +11,6 @@ type HabitsCardProps = {
 };
 
 export default function HabitsCard({ title, leftIcon = 'leaf-outline', onPress }: HabitsCardProps) {
-  // Resolve colors via hook so they auto-switch with theme
   const textColor = useThemeColor({}, 'text');
   const iconColor = useThemeColor({}, 'icon');
   const bg = useThemeColor({}, 'backgroundSecondary');
