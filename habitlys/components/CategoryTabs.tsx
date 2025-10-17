@@ -36,6 +36,7 @@ export function CategoryTabs({
               styles.tab,
               isActive && {
                 backgroundColor: colors.tint,
+                borderRadius: 100,
               },
             ]}
             accessibilityRole="tab"
@@ -68,8 +69,10 @@ const styles = StyleSheet.create({
   tab: {
     paddingHorizontal: 16,
     paddingVertical: 12,
-    borderRadius: 20,
+    borderRadius: 100,
     backgroundColor: "rgba(128, 128, 128, 0.1)",
+    overflow: 'hidden',
+    minHeight: 40,
   },
   tabText: {
     fontSize: 14,

@@ -17,7 +17,6 @@ export function HabitsList({ habits, onHabitPress }: HabitsListProps) {
         <HabitsCard
           key={habit.id}
           title={habit.title}
-          leftIcon="walk"
           onPress={() => onHabitPress(habit)}
         />
       ))}
