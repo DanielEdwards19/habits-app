@@ -46,7 +46,7 @@ export default function HomeScreen() {
                 styles.button,
                 { backgroundColor: colors.primary, paddingVertical: 14 },
               ]}
-              onPress={() => router.push("/modal")}
+              onPress={() => router.push("/modals/add-habit")}
             >
               <ThemedText
                 type="defaultSemiBold"

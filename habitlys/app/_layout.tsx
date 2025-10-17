@@ -10,7 +10,7 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export const unstable_settings = {
-  anchor: "(tabs)",
+  anchor: "screens/home",
 };
 
 export default function RootLayout() {
@@ -19,9 +19,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="screens/home" options={{ headerShown: false }} />
         <Stack.Screen
-          name="modal"
+          name="modals/add-habit"
           options={{
             presentation: "fullScreenModal",
             headerShown: false,

@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Colors } from "@/constants/theme";
 import { ModalHeader } from "@/components/ModalHeader";
-import { CategoryTabs } from "../components/CategoryTabs";
+import { CategoryTabs } from "@/components/CategoryTabs";
 import { HabitsList } from "@/components/HabitsList";
 import { useHabits } from "@/hooks/useHabits";
 import { CATEGORIES, CategoryId, Habit } from "@/constants/habits";
