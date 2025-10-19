@@ -1,6 +1,7 @@
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { ThemedText } from "@/components/themed-text";
 import { Ionicons } from "@expo/vector-icons";
+import { Spacing } from "@/constants/theme";
 
 interface ModalHeaderProps {
   title: string;
@@ -10,11 +11,10 @@ interface ModalHeaderProps {
 
 export function ModalHeader({ title, onClose, tintColor }: ModalHeaderProps) {
   return (
-    <>
+    <View style={styles.header}>
       <Pressable
         onPress={onClose}
         hitSlop={12}
-        style={styles.closeButton}
         accessibilityRole="button"
         accessibilityLabel="Close"
       >
@@ -24,19 +24,17 @@ export function ModalHeader({ title, onClose, tintColor }: ModalHeaderProps) {
       <ThemedText type="title" style={styles.title}>
         {title}
       </ThemedText>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  closeButton: {
-    position: "absolute",
-    top: 70,
-    left: 20,
-    zIndex: 10,
+  header: {
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.md,
+    paddingBottom: Spacing.lg,
   },
   title: {
-    paddingHorizontal: 20,
-    marginBottom: 16,
+    marginTop: Spacing.md,
   },
 });

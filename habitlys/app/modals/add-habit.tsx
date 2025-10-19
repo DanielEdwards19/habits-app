@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { router } from "expo-router";
-import { StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Colors } from "@/constants/theme";
 import { ModalHeader } from "@/components/ModalHeader";
@@ -13,12 +13,16 @@ import { CATEGORIES, CategoryId, Habit } from "@/constants/habits";
 export default function ModalScreen() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
+  const insets = useSafeAreaInsets();
   const [activeCategory, setActiveCategory] = useState<CategoryId>("health");
   
   const filteredHabits = useHabits(activeCategory);
 
   const handleHabitPress = useCallback((habit: Habit) => {
-    console.log("Selected habit:", habit.title);
+    router.push({
+      pathname: "/modals/habit-customization",
+      params: { title: habit.title }
+    });
   }, []);
 
   const handleClose = useCallback(() => {
@@ -26,9 +30,15 @@ export default function ModalScreen() {
   }, []);
 
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-      edges={["top", "bottom"]}
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: colors.background,
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom,
+        },
+      ]}
     >
       <ModalHeader
         title="Add A Habit"
@@ -46,13 +56,12 @@ export default function ModalScreen() {
         habits={filteredHabits}
         onHabitPress={handleHabitPress}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 70,
   },
 });
