@@ -11,7 +11,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.spritelyed.habitlys",
-      "appleTeamId": "9V82WZ58W3"
+      "appleTeamId": "49N5GUAM4M",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,6 +31,7 @@
     },
     "plugins": [
       "expo-router",
+      "./plugins/withPodfile",
       [
         "expo-splash-screen",
         {
@@ -39,6 +41,16 @@
           "backgroundColor": "#ffffff",
           "dark": {
             "backgroundColor": "#000000"
+          }
+        }
+      ],
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
           }
         }
       ]
