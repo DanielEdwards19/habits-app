@@ -12,7 +12,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.spritelyed.habitlys",
       "appleTeamId": "49N5GUAM4M",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -58,6 +61,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d231fed2-e51d-442c-a74c-27c23ae55724"
+      }
+    },
+    "owner": "spritelyed"
   }
 }

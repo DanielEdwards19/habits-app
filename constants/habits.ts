@@ -21,6 +21,7 @@ export const CATEGORIES: Category[] = [
 
 export const HABITS: Habit[] = [
   // 🧠 Health
+  { id: "gym", title: "Gym", icon: "barbell-outline", category: "health" },
   { id: "drink-water", title: "Drink Water", icon: "water-outline", category: "health" },
   { id: "daily-walk", title: "Daily Walk", icon: "walk-outline", category: "health" },
   { id: "sleep-early", title: "Sleep Early", icon: "moon-outline", category: "health" },
@@ -28,6 +29,8 @@ export const HABITS: Habit[] = [
   { id: "vitamins", title: "Vitamins", icon: "medical-outline", category: "health" },
   
   // 🌿 Mental Health
+  { id: "dont-beat-off", title: "Don't Beat Off", icon: "close-circle-outline", category: "mental" },
+  { id: "no-instagram", title: "No Instagram", icon: "logo-instagram", category: "mental" },
   { id: "meditate", title: "Meditate", icon: "leaf-outline", category: "mental" },
   { id: "gratitude-list", title: "Gratitude List", icon: "heart-outline", category: "mental" },
   { id: "digital-detox", title: "Digital Detox", icon: "phone-portrait-outline", category: "mental" },
@@ -35,6 +38,8 @@ export const HABITS: Habit[] = [
   { id: "read-calmly", title: "Read Calmly", icon: "book-outline", category: "mental" },
   
   // ⚡ Productivity
+  { id: "coding", title: "Coding", icon: "code-slash-outline", category: "productivity" },
+  { id: "no-uber-eats", title: "No Uber Eats", icon: "fast-food-outline", category: "productivity" },
   { id: "plan-day", title: "Plan Day", icon: "calendar-outline", category: "productivity" },
   { id: "deep-work", title: "Deep Work", icon: "timer-outline", category: "productivity" },
   { id: "tidy-desk", title: "Tidy Desk", icon: "desktop-outline", category: "productivity" },
