@@ -1,9 +1,9 @@
-import { Pressable, StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
-import { useThemeColor } from '@/hooks/use-theme-color';
 import { Spacing } from '@/constants/theme';
-import { Ionicons } from '@expo/vector-icons';
 import { UserHabit } from '@/contexts/HabitsContext';
+import { useThemeColor } from '@/hooks/use-theme-color';
+import { Ionicons } from '@expo/vector-icons';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 interface UserHabitCardProps {
   habit: UserHabit;
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    padding: Spacing.lg,
+    padding: Spacing.md,
     borderRadius: 12,
     marginBottom: Spacing.sm,
   },
