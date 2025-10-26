@@ -1,20 +1,21 @@
-import { Pressable, ScrollView, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Image } from "expo-image";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import { Colors, Spacing } from "@/constants/theme";
-import { StyleSheet } from "react-native";
-import { router } from "expo-router";
-import { useHabitsContext } from "@/contexts/HabitsContext";
 import UserHabitCard from "@/components/UserHabitCard";
+import { Colors, Spacing } from "@/constants/theme";
+import { useAuth } from "@/contexts/AuthContext";
+import { useHabitsContext } from "@/contexts/HabitsContext";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Ionicons } from '@expo/vector-icons';
+import { Image } from "expo-image";
+import { router } from "expo-router";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
   const { userHabits, toggleHabitCompletion, isHabitCompleted } = useHabitsContext();
+  const { signOut } = useAuth();
 
   return (
     <SafeAreaView
@@ -23,8 +24,14 @@ export default function HomeScreen() {
     >
       {/* Header */}
       <ThemedView style={styles.header}>
-        <Pressable style={styles.menuButton}>
-          <Ionicons name="menu" size={24} color={colors.text} />
+        <Pressable 
+          style={styles.menuButton}
+          onPress={async () => {
+            await signOut();
+            router.replace('/auth/phone-sign-in');
+          }}
+        >
+          <Ionicons name="log-out-outline" size={24} color={colors.text} />
         </Pressable>
         
         <ThemedView style={styles.progressContainer}>
