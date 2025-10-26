@@ -26,7 +26,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.spritelyed.habitlys"
+      "package": "com.spritelyed.habitlys",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "output": "static",

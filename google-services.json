@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "164724255639",
+    "project_id": "habitly-eee59",
+    "storage_bucket": "habitly-eee59.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164724255639:android:f7a324f6c8073b44c4f2d2",
+        "android_client_info": {
+          "package_name": "com.spritelyed.habitlys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164724255639-cr4hq2hrkg84dqivngrt4g468cv2fe26.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMnn0WDG-NtTvWuJwx7Olk_fephzisuY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164724255639-cr4hq2hrkg84dqivngrt4g468cv2fe26.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "164724255639-eb9ve3ii8n44i1d0p5u0r5eus8s2i0c7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.spritelyed.habitlys"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
