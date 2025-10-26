@@ -7,6 +7,11 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+// Initialize Reactotron FIRST (line 1 as per docs)
+if (__DEV__) {
+  require("../ReactotronConfig.ts");
+}
+
 import { AuthProvider } from "@/contexts/AuthContext";
 import { HabitsProvider } from "@/contexts/HabitsContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
