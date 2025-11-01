@@ -1,15 +1,15 @@
-import { useState, useCallback } from "react";
-import { router, useLocalSearchParams } from "expo-router";
-import { StyleSheet, Pressable, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ModalHeader } from "@/components/ModalHeader";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import { Colors, Spacing } from "@/constants/theme";
-import { Ionicons } from '@expo/vector-icons';
-import { useHabitsContext } from "@/contexts/HabitsContext";
 import { HABITS } from "@/constants/habits";
-import { ModalHeader } from "@/components/ModalHeader";
+import { Colors, Spacing } from "@/constants/theme";
+import { useHabitsContext } from "@/contexts/HabitsContext";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { Ionicons } from '@expo/vector-icons';
+import { router, useLocalSearchParams } from "expo-router";
+import { useCallback, useState } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function HabitCustomizationScreen() {
   const colorScheme = useColorScheme();
@@ -36,10 +36,14 @@ export default function HabitCustomizationScreen() {
     }
   }, [duration]);
 
-  const handleAddHabit = useCallback(() => {
-    addHabit(habit, duration);
-    router.back();
-    router.back(); // Go back to home screen
+  const handleAddHabit = useCallback(async () => {
+    try {
+      await addHabit(habit, duration);
+      router.back();
+      router.back(); // Go back to home screen
+    } catch (error) {
+      console.error('Failed to add habit:', error);
+    }
   }, [habit, duration, addHabit]);
 
   const handleClose = useCallback(() => {

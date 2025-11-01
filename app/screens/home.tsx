@@ -117,7 +117,13 @@ export default function HomeScreen() {
                     key={habit.id}
                     habit={habit}
                     isCompleted={isHabitCompleted(habit.id)}
-                    onToggle={() => toggleHabitCompletion(habit.id)}
+                    onToggle={async () => {
+                      try {
+                        await toggleHabitCompletion(habit.id);
+                      } catch (error) {
+                        console.error('Failed to toggle habit:', error);
+                      }
+                    }}
                   />
                 ))}
               </ThemedView>
