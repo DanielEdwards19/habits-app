@@ -12,7 +12,7 @@ import { HabitsProvider } from "@/contexts/HabitsContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export const unstable_settings = {
-  anchor: "screens/home",
+  anchor: "(tabs)/home",
 };
 
 export default function RootLayout() {
@@ -24,7 +24,7 @@ export default function RootLayout() {
         <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
           <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="screens/home" options={{ headerShown: false }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen
               name="auth/phone-sign-in"
               options={{

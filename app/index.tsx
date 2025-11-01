@@ -6,7 +6,7 @@ export default function IndexScreen() {
 
   // Redirect based on auth state
   if (user) {
-    return <Redirect href="/screens/home" />;
+    return <Redirect href="/(tabs)/home" />;
   }
 
   return <Redirect href="/auth/phone-sign-in" />;
