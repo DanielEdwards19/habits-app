@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import "react-native-reanimated";
+// import "react-native-reanimated"; // Temporarily removed
 
 import { AuthProvider } from "@/contexts/AuthContext";
 import { HabitsProvider } from "@/contexts/HabitsContext";
