@@ -1,16 +1,20 @@
+import { AnimatedWaterDrop } from '@/components/AnimatedWaterDrop';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Spacing } from '@/constants/theme';
+import { Colors, Spacing } from '@/constants/theme';
 import { useAuth } from '@/contexts/AuthContext';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 import type { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import auth from '@react-native-firebase/auth';
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, TextInput } from 'react-native';
+import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function PhoneSignIn() {
   const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+  const colors = Colors[colorScheme ?? "light"];
   const { signInWithPhoneNumber } = useAuth();
 
   // If null, no SMS has been sent
@@ -71,15 +75,28 @@ export default function PhoneSignIn() {
           style={styles.keyboardView}
         >
           <ScrollView contentContainerStyle={styles.scrollContent}>
-            <ThemedText type="title" style={styles.title}>Phone Sign In</ThemedText>
+            {/* Animated Water Drop */}
+            <View style={styles.logoContainer}>
+              <AnimatedWaterDrop size={150}/>
+            </View>
+
+            <ThemedText type="title" style={styles.title}>Build Habits.</ThemedText>
+            <ThemedText type="title" style={styles.title}>Give Water</ThemedText>
             <ThemedText type="default" style={styles.subtitle}>
-              Enter your phone number to receive a verification code
+              Enter your phone number to get started
             </ThemedText>
             
             <TextInput
-              style={styles.input}
-              placeholder="+61400 000 000"
-              placeholderTextColor="#999"
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.background,
+                  borderColor: colors.border,
+                  color: colors.text,
+                }
+              ]}
+              placeholder="Enter Your Mobile Number"
+              placeholderTextColor={colorScheme === 'dark' ? '#666' : '#999'}
               value={phoneNumber}
               onChangeText={setPhoneNumber}
               keyboardType="phone-pad"
@@ -88,14 +105,18 @@ export default function PhoneSignIn() {
             
             {error ? <ThemedText style={styles.error}>{error}</ThemedText> : null}
             
-            <Button
-              title="Send Verification Code"
+            <Pressable
+              style={[styles.button, { backgroundColor: colors.primary }]}
               onPress={() => handleSignInWithPhoneNumber(phoneNumber)}
-            />
-            
-            <ThemedText type="default" style={styles.helperText}>
-              Test number: +61400 000 000
-            </ThemedText>
+            >
+              <ThemedText
+                type="defaultSemiBold"
+                lightColor="#FFFFFF"
+                darkColor="#FFFFFF"
+              >
+                Get Started
+              </ThemedText>
+            </Pressable>
           </ScrollView>
         </KeyboardAvoidingView>
       </ThemedView>
@@ -109,15 +130,27 @@ export default function PhoneSignIn() {
         style={styles.keyboardView}
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
+          {/* Animated Water Drop */}
+          <View style={styles.logoContainer}>
+            <AnimatedWaterDrop size={150} />
+          </View>
+
           <ThemedText type="title" style={styles.title}>Enter Code</ThemedText>
           <ThemedText type="default" style={styles.subtitle}>
             Enter the verification code sent to {phoneNumber}
           </ThemedText>
           
           <TextInput
-            style={styles.input}
-            placeholder="888 888"
-            placeholderTextColor="#999"
+            style={[
+              styles.input,
+              {
+                backgroundColor: colors.background,
+                borderColor: colors.border,
+                color: colors.text,
+              }
+            ]}
+            placeholder="Enter Code"
+            placeholderTextColor={colorScheme === 'dark' ? '#666' : '#999'}
             value={code}
             onChangeText={text => setCode(text)}
             keyboardType="number-pad"
@@ -126,11 +159,18 @@ export default function PhoneSignIn() {
           
           {error ? <ThemedText style={styles.error}>{error}</ThemedText> : null}
           
-          <Button title="Confirm Code" onPress={() => confirmCode()} />
-          
-          <ThemedText type="default" style={styles.helperText}>
-            Test code: 888 888
-          </ThemedText>
+          <Pressable
+            style={[styles.button, { backgroundColor: colors.primary }]}
+            onPress={() => confirmCode()}
+          >
+            <ThemedText
+              type="defaultSemiBold"
+              lightColor="#FFFFFF"
+              darkColor="#FFFFFF"
+            >
+              Confirm Code
+            </ThemedText>
+          </Pressable>
         </ScrollView>
       </KeyboardAvoidingView>
     </ThemedView>
@@ -149,32 +189,45 @@ const styles = StyleSheet.create({
     padding: Spacing.lg,
     justifyContent: 'center',
   },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: Spacing.xl,
+  },
   title: {
-    marginBottom: Spacing.md,
+    marginBottom: Spacing.xs,
+    textAlign: 'center',
   },
   subtitle: {
     marginBottom: Spacing.xl,
     opacity: 0.7,
+    textAlign: 'center',
   },
   input: {
-    height: 50,
+    height: 56,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: Spacing.md,
+    borderRadius: 12,
+    paddingHorizontal: Spacing.lg,
     marginBottom: Spacing.lg,
     fontSize: 16,
-    color: '#000',
-    backgroundColor: '#fff',
   },
   error: {
     color: 'red',
+    marginBottom: Spacing.md,
+  },
+  button: {
+    width: '100%',
+    paddingVertical: Spacing.md,
+    paddingHorizontal: Spacing.lg,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: Spacing.md,
   },
   helperText: {
     marginTop: Spacing.lg,
     opacity: 0.6,
     fontSize: 14,
+    textAlign: 'center',
   },
 });
 

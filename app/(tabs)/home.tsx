@@ -1,3 +1,4 @@
+import { AnimatedWaterDrop } from "@/components/AnimatedWaterDrop";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import UserHabitCard from "@/components/UserHabitCard";
@@ -6,7 +7,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useHabitsContext } from "@/contexts/HabitsContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Ionicons } from '@expo/vector-icons';
-import { Image } from "expo-image";
 import { router } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -56,12 +56,9 @@ export default function HomeScreen() {
       {/* Main Content */}
       <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContent}>
         <ThemedView style={styles.container}>
-          <Image
-            source={require("@/assets/images/waterdrop.png")}
-            style={styles.logo}
-            contentFit="contain"
-            priority="high"
-          />
+          <View style={styles.logoContainer}>
+            <AnimatedWaterDrop size={150} />
+          </View>
 
           {userHabits.length === 0 ? (
             // Empty State
@@ -204,9 +201,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Spacing.lg,
   },
-  logo: {
-    width: "40%",
-    aspectRatio: 0.8,
+  logoContainer: {
+    alignItems: 'center',
     marginBottom: Spacing.lg,
   },
   title: {
