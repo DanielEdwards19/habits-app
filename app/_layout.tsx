@@ -9,6 +9,7 @@ import "react-native-reanimated";
 
 import { AuthProvider } from "@/contexts/AuthContext";
 import { HabitsProvider } from "@/contexts/HabitsContext";
+import { QuotesProvider } from "@/contexts/quotesContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export const unstable_settings = {
@@ -21,6 +22,7 @@ export default function RootLayout() {
   return (
     <AuthProvider>
       <HabitsProvider>
+        <QuotesProvider>
         <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
           <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -49,6 +51,7 @@ export default function RootLayout() {
           </Stack>
           <StatusBar style="auto" />
         </ThemeProvider>
+        </QuotesProvider>
       </HabitsProvider>
     </AuthProvider>
   );
