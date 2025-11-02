@@ -32,29 +32,28 @@ export default function GoalsScreen() {
   return (
     <SafeAreaView
       style={[styles.safeArea, { backgroundColor: colors.background }]}
-      edges={["top", "bottom"]}
+      edges={["top"]}
     >
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.header}>
-          <Ionicons name="book" size={32} color={colors.primary} />
-          <ThemedText type="title" style={styles.title}>
-            Stoic Wisdom
+      <ThemedView style={styles.header}>
+        <Ionicons name="book" size={32} color={colors.primary} />
+        <ThemedText type="title" style={styles.title}>
+          Stoic Wisdom
+        </ThemedText>
+      </ThemedView>
+
+      {quotes.length === 0 ? (
+        <ThemedView style={styles.emptyState}>
+          <Ionicons name="book-outline" size={80} color={colors.text + '40'} />
+          <ThemedText type="default" style={styles.emptyText}>
+            No quotes available yet
           </ThemedText>
         </ThemedView>
-
-        {quotes.length === 0 ? (
-          <ThemedView style={styles.emptyState}>
-            <Ionicons name="book-outline" size={80} color={colors.text + '40'} />
-            <ThemedText type="default" style={styles.emptyText}>
-              No quotes available yet
-            </ThemedText>
-          </ThemedView>
-        ) : (
-          <FlatList
-            data={quotes}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.listContent}
-            renderItem={({ item }) => (
+      ) : (
+        <FlatList
+          data={quotes}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.listContent}
+          renderItem={({ item }) => (
               <ThemedView style={[styles.quoteCard, { backgroundColor: colors.backgroundSecondary }]}>
                 <Ionicons name="heart" size={24} color={colors.primary} style={styles.quoteIcon} />
                 <ThemedText type="default" style={styles.quoteText}>
@@ -72,9 +71,8 @@ export default function GoalsScreen() {
                 )}
               </ThemedView>
             )}
-          />
-        )}
-      </ThemedView>
+        />
+      )}
     </SafeAreaView>
   );
 }
@@ -82,10 +80,6 @@ export default function GoalsScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-  },
-  container: {
-    flex: 1,
-    padding: Spacing.lg,
   },
   loadingContainer: {
     flex: 1,
@@ -98,7 +92,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: Spacing.xl,
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.lg,
+    paddingBottom: Spacing.md,
     gap: Spacing.md,
   },
   title: {
@@ -108,13 +104,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: Spacing.lg,
   },
   emptyText: {
     marginTop: Spacing.md,
     opacity: 0.6,
   },
   listContent: {
-    paddingBottom: Spacing.lg,
+    paddingHorizontal: Spacing.lg,
+    paddingBottom: Spacing.xl,
   },
   quoteCard: {
     padding: Spacing.lg,
