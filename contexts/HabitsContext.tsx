@@ -1,5 +1,5 @@
 import { Habit } from '@/constants/habits';
-import { firestoreService, UserHabit } from '@/services/firestore';
+import { habitsService, UserHabit } from '@/services/habits';
 import React, { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
 
@@ -28,7 +28,7 @@ export const HabitsProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       return;
     }
 
-    const unsubscribe = firestoreService.subscribeToUserHabits(
+    const unsubscribe = habitsService.subscribeToUserHabits(
       user.uid,
       (habits) => {
         setUserHabits(habits);
@@ -50,7 +50,7 @@ export const HabitsProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
 
     try {
-      await firestoreService.addHabit(user.uid, habit, duration);
+      await habitsService.addHabit(user.uid, habit, duration);
     } catch (error) {
       console.error('Error adding habit:', error);
       throw error;
@@ -59,7 +59,7 @@ export const HabitsProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const removeHabit = useCallback(async (habitId: string) => {
     try {
-      await firestoreService.removeHabit(habitId);
+      await habitsService.removeHabit(habitId);
     } catch (error) {
       console.error('Error removing habit:', error);
       throw error;
@@ -76,7 +76,7 @@ export const HabitsProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       : [...habit.completedDates, today];
 
     try {
-      await firestoreService.toggleHabitCompletion(habitId, updatedCompletedDates);
+      await habitsService.toggleHabitCompletion(habitId, updatedCompletedDates);
     } catch (error) {
       console.error('Error toggling habit completion:', error);
       throw error;

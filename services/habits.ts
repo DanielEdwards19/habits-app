@@ -14,7 +14,7 @@ export interface UserHabit extends Habit {
 
 const HABITS_COLLECTION = 'habits';
 
-export const firestoreService = {
+export const habitsService = {
   /**
    * Subscribe to user's habits with real-time updates
    */
