@@ -35,7 +35,6 @@ export default function StoicsScreen() {
       edges={["top"]}
     >
       <ThemedView style={styles.header}>
-        <Ionicons name="book" size={32} color={colors.primary} />
         <ThemedText type="title" style={styles.title}>
           Stoic Wisdom
         </ThemedText>
