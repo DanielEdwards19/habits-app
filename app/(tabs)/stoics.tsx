@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function GoalsScreen() {
+export default function StoicsScreen() {
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
   const { quotes, loading } = useQuotes();

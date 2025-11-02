@@ -29,7 +29,7 @@ export default function PhoneSignIn() {
       // Actually, if he/she tries to enter it, he/she will get an error message because the code was already used in the background.
       // In this function, make sure you hide the component(s) for entering the code and/or navigate away from this screen.
       // It is also recommended to display a message to the user informing him/her that he/she has successfully logged in.
-      router.replace('/screens/home');
+      router.replace('/(tabs)/home');
     }
   }
 
